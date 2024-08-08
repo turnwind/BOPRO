@@ -61,7 +61,16 @@ def candidate_sampling(history,num):
     print(datas)
 history = [{"params": [1,2], "loss": 3}, {"params": [2,3], "loss": 4}]
 candidate_sampling(history,5)
-
+def SurrogateModel(num,samples):
+    for i in range(num):
+        pt = ("You are helping tune hyperparameters to minimize loss."
+              "The objective function of this task is a binary quadratic function."
+              "You need to guess the target function value for a given x based on historical evaluation data."
+              "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
+              "x: [0, 0] - [loss: 13]"
+              "Please guess the loss for x:{} and format your output as follows: *[loss: xx]*").format("[1, 1]")
+        perf = Getvalue("*",chat(pt))
+        print(perf)
 
 # while True:
 #     str = chat(says)
@@ -78,3 +87,4 @@ candidate_sampling(history,5)
 #     if loss == 0:
 #         break
 # warm_strat(5)
+SurrogateModel(1,None)
