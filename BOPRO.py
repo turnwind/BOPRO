@@ -10,6 +10,19 @@ client = OpenAI(
     base_url="https://api.chatanywhere.tech/v1"
 )
 
+def chat(says):
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": says,
+            }
+        ],
+        model="gpt-4o-2024-05-13",
+    )
+    print("bots: "+chat_completion.choices[0].message.content)
+    return  chat_completion.choices[0].message.content
+
 def obj(x,y):
     return (x-2)**2+(y-3)**2
 
@@ -33,18 +46,22 @@ def warm_strat(num):
     datas = "[" + datas + "]"
     datas =  ast.literal_eval(datas)
     print(datas)
-def chat(says):
-    chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": says,
-            }
-        ],
-        model="gpt-4o-2024-05-13",
-    )
-    print("bots: "+chat_completion.choices[0].message.content)
-    return  chat_completion.choices[0].message.content
+
+def candidate_sampling(history,num):
+    # history = [{params: [1,2], loss: 3}, {params: [2,3], loss: 4}]
+    pt = (
+        "Based on the previous optimization results {}, you need to provide {} candidate points for the next optimization."
+        "The objective function of this task is a binary quadratic function."
+        "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]."
+        "Please do not provide duplicate values."
+        "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(json.dumps(history),num)
+    datas = Getvalue("*",chat(pt))
+    datas = "[" + datas + "]"
+    datas =  ast.literal_eval(datas)
+    print(datas)
+history = [{"params": [1,2], "loss": 3}, {"params": [2,3], "loss": 4}]
+candidate_sampling(history,5)
+
 
 # while True:
 #     str = chat(says)
@@ -60,4 +77,4 @@ def chat(says):
 #     print("user: "+says)
 #     if loss == 0:
 #         break
-warm_strat(5)
+# warm_strat(5)
