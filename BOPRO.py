@@ -33,6 +33,18 @@ def warm_strat(num):
     datas = "[" + datas + "]"
     datas =  ast.literal_eval(datas)
     print(datas)
+
+def SurrogateModel(num,samples):
+    for i in range(num):
+        pt = ("You are helping tune hyperparameters to minimize loss."
+              "The objective function of this task is a binary quadratic function."
+              "You need to guess the target function value for a given x based on historical evaluation data."
+              "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
+              "x: [0, 0] - [loss: 13]"
+              "Please guess the loss for x:{} and format your output as follows: *[loss: xx]*").format("[1, 1]")
+        perf = Getvalue("*",chat(pt))
+        print(perf)
+
 def chat(says):
     chat_completion = client.chat.completions.create(
         messages=[
@@ -60,4 +72,5 @@ def chat(says):
 #     print("user: "+says)
 #     if loss == 0:
 #         break
-warm_strat(5)
+#warm_strat(5)
+SurrogateModel(1,None)
