@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import ast
 import numpy as np
 import matplotlib.pyplot as plt
 from openai import OpenAI
@@ -15,6 +16,23 @@ def obj(x,y):
 with open("prompt.txt","r",encoding="utf-8") as file:
     says = file.read()
 
+def Getvalue(ch,str):
+    s = str.find(ch)
+    e = str[s+1:].find(ch)
+    return str[s+1:s+e+1]
+
+def warm_strat(num):
+    pt = (
+        "You need to assume {} initial points for an optimization problem, and the objective function corresponding to the initial points should be as small as possible."
+        "The objective function of this task is a binary quadratic function."
+        "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]."
+        "According to the experience of previous tasks, the minimum value of the objective function may be around x1, x2 = 3, 3."
+        "Please do not provide duplicate values."
+        "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(num)
+    datas = Getvalue("*",chat(pt))
+    datas = "[" + datas + "]"
+    datas =  ast.literal_eval(datas)
+    print(datas)
 def chat(says):
     chat_completion = client.chat.completions.create(
         messages=[
@@ -28,17 +46,18 @@ def chat(says):
     print("bots: "+chat_completion.choices[0].message.content)
     return  chat_completion.choices[0].message.content
 
-while True:
-    str = chat(says)
-    s = str.find("{")
-    e = str.find("}")
-    str = str[s:e+1]
-    data = json.loads(str)
-    numbers = list(data.values())
-    loss = obj(numbers[0][0],numbers[0][1])
-    loss = np.round(loss,2)
-    text  = str + " - [\"loss\": {}]".format(loss)
-    says = (says[:-198] + "\n"+ text  +says[-198:])
-    print("user: "+says)
-    if loss == 0:
-        break
+# while True:
+#     str = chat(says)
+#     s = str.find("{")
+#     e = str.find("}")
+#     str = str[s:e+1]
+#     data = json.loads(str)
+#     numbers = list(data.values())
+#     loss = obj(numbers[0][0],numbers[0][1])
+#     loss = np.round(loss,2)
+#     text  = str + " - [\"loss\": {}]".format(loss)
+#     says = (says[:-198] + "\n"+ text  +says[-198:])
+#     print("user: "+says)
+#     if loss == 0:
+#         break
+warm_strat(5)
