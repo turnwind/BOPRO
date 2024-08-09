@@ -108,5 +108,5 @@ if __name__ == "__main__":
     
     print("The final result is: ",min(arrloss))
     plt.plot(arrloss)
-    plt .show()
+    plt.show()
       
