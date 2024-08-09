@@ -88,14 +88,25 @@ def SurrogateModel(history,samples):
 
 
 if __name__ == "__main__":
+    numiters = 10
     inidatas = warm_strat(3)
     datas = []
+    arrloss = []
     for i in inidatas:
         loss = obj(i[0],i[1])
         new_entry = {"params": [i[0], i[1]], "loss": loss}
         datas.append(new_entry)
         
-    samplers = candidate_sampling(datas,5)
-    data_pred = SurrogateModel(datas,samplers)
+    for i in range(numiters):
+        samplers = candidate_sampling(datas,5)
+        data_pred = SurrogateModel(datas,samplers)
+        next_point = min(data_pred, key=lambda x: x['loss'])
+        loss = obj(next_point["params"][0],next_point["params"][1])
+        arrloss.append(loss)
+        new_entry = {"params": next_point["params"], "loss": loss} 
+        datas.append(new_entry)
     
-        
+    print("The final result is: ",min(arrloss))
+    plt.plot(arrloss)
+    plt .show()
+      
