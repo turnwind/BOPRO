@@ -4,6 +4,7 @@ import re
 import ast
 import numpy as np
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 from openai import OpenAI
 
 client = OpenAI(
@@ -77,6 +78,7 @@ def SurrogateModel(history,samples):
                 "You need to guess the target function value for a given x based on historical evaluation data."
                 "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
                 "{}"
+                "As short as possible, do not provide too much information."
                 "Please guess the loss for params:{} and format your output as follows: *xx*").format(history,samples[i])
             loss = re.findall(r'-?\d+\.\d+|-?\d+', Getvalue("*",chat(pt)))
             if len(loss) == 1:
@@ -88,17 +90,24 @@ def SurrogateModel(history,samples):
 
 
 if __name__ == "__main__":
-    numiters = 10
-    inidatas = warm_strat(3)
+    
+    ### config
+    numiters = 10        # number of iters for BO
+    numinipoint = 3      # number of ini points
+    numsamples = 5       # number of sampled points
+    
+    ### initial
+    inidatas = warm_strat(numiters)
     datas = []
     arrloss = []
     for i in inidatas:
         loss = obj(i[0],i[1])
         new_entry = {"params": [i[0], i[1]], "loss": loss}
         datas.append(new_entry)
-        
-    for i in range(numiters):
-        samplers = candidate_sampling(datas,5)
+    
+    ### Optimization   
+    for i in tqdm(range(numiters)):
+        samplers = candidate_sampling(datas,numsamples)
         data_pred = SurrogateModel(datas,samplers)
         next_point = min(data_pred, key=lambda x: x['loss'])
         loss = obj(next_point["params"][0],next_point["params"][1])
