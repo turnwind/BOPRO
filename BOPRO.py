@@ -67,7 +67,59 @@ def candidate_sampling(history,num):
         if len(datas) == num:
             flag = 0
     return datas
+
+agent_prompts = {
+    "optimistic": "You are an optimistic agent. Inclined to explore uncertainties.",
+    "pessimistic": "You are a pessimistic agent. Inclined to avoid risks.",
+    "Conservative": "You are a conservative agent. You weigh the pros and cons to make decisions.",
+}
+def AcquisitionFunction(history,pred):
     
+    m = 2
+    inipt = ("{}"
+            "You need to reasonably select the most potential parameters from the predicted data table based on your own experience and historical data tables for the next optimization step."
+            "We hope you can balance the relationship between exploration and exploitation to achieve the best results."
+            "The following is a historical data table, with format [Hyperparameters] - [loss]:"
+            "{}"
+            "The following is a predicted data table, with format [Hyperparameters] - [predloss]:"
+            "{}"
+            "Please provide 2 sets of parameter combinations that you consider optimal, in the format *[],[]*")
+    res = {"optimistic":"","Conservative":"","pessimistic":""}
+    datas = []
+    for i in agent_prompts.keys():
+        flag  = 1 #Determine whether the output meets the format.
+        while flag:
+            pt = inipt.format(agent_prompts[i],json.dumps(history),json.dumps(pred))
+            res[i] = chat(pt)
+            str = Getvalue("*",res[i])
+            str = "[" + str + "]"
+            data =  ast.literal_eval(str)
+            if len(data) == 2:
+                datas.append(data)
+                flag = 0
+                
+    pt = ("{}"
+            "The parameter combination chosen by the three of you is: "
+            "{}"
+            "The reasons for the choices made by the other two are: "
+            "{} and {}"
+            "Please select one best parameter combination from those chosen by everyone, in the format *[]*")
+    keys = list(agent_prompts.keys())
+    for i in range(m):
+        for index, key in enumerate(agent_prompts.keys()):
+            flag  = 1 #Determine whether the output meets the format.
+            while flag:
+                pt.format(agent_prompts[key],datas,res[keys[(index+1)%3]],res[keys[(index+2)%3]])
+                res[i] = chat(pt)
+                str = Getvalue("*",res[i])
+                str = "[" + str + "]"
+                data =  ast.literal_eval(str)
+                if len(data) == 1:
+                    flag = 0
+    return data[0]
+
+AcquisitionFunction([{"params": [0, 0], "loss": 13}], [{"params": [1, 1], "loss": 10},{"params": [2, 1], "loss": 8},{"params": [2, 2], "loss": 6},{"params": [2, 3], "loss": 0}])
+
 def SurrogateModel(history,samples):
     data_pred = []
     for i in range(len(samples)):
@@ -100,6 +152,7 @@ if __name__ == "__main__":
     inidatas = warm_strat(numiters)
     datas = []
     arrloss = []
+    arrloss.append(min(inidatas))
     for i in inidatas:
         loss = obj(i[0],i[1])
         new_entry = {"params": [i[0], i[1]], "loss": loss}
