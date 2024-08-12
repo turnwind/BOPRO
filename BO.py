@@ -1,4 +1,7 @@
 from bayes_opt import BayesianOptimization
+import numpy as np
+import matplotlib.pyplot as plt
+
 pbounds = {'x': (-5, 5), 'y': (-5, 5)}
 def target_function(x, y):
     return -(x-2)**2 - (y - 3)**2
@@ -9,16 +12,16 @@ optimizer = BayesianOptimization(
     random_state=1,
 )
 
-initial_points = []
-for i in range(3):
-    new_entry = {'x': inidatas[i][0], 'y': inidatas[i][1]}
-    initial_points.append(new_entry) 
+# initial_points = []
+# for i in range(3):
+#     new_entry = {'x': inidatas[i][0], 'y': inidatas[i][1]}
+#     initial_points.append(new_entry) 
 
-for point in initial_points:
-    optimizer.probe(
-        params=point,
-        lazy=True
-    )
+# for point in initial_points:
+#     optimizer.probe(
+#         params=point,
+#         lazy=True
+#     )
 
 # 执行优化
 optimizer.maximize(

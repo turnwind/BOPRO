@@ -27,9 +27,6 @@ def chat(says):
 def obj(x,y):
     return (x-2)**2+(y-3)**2
 
-with open("prompt.txt","r",encoding="utf-8") as file:
-    says = file.read()
-
 def Getvalue(ch,str):
     s = str.find(ch)
     e = str[s+1:].find(ch)
