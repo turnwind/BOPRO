@@ -68,6 +68,13 @@ if __name__ == "__main__":
     for item in datas:
         data.append(item["loss"])
 
+    # 前面三个点取最小值
+    min_data = min(data[:3])
+    data[2] = min_data
+    # 去除前三个点
+    data = data[2:]
+    for i in range(len(data)):
+        data[i] = min(data[:i+1])
     # 打开json文件
     with open("LLM.json", "r") as f:
         data1 = json.load(f)

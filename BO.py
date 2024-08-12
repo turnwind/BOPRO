@@ -21,7 +21,7 @@ optimizer = BayesianOptimization(
 # 执行优化
 optimizer.maximize(
     init_points=3,
-    n_iter=10,
+    n_iter=11,
 )
 
 target_values = [-res['target'] for res in optimizer.res]

@@ -46,7 +46,7 @@ try:
 except FileNotFoundError:
     data = {"loss": []}
 
-data["loss"].append(target_values[-10:])
+data["loss"].append(target_values[-11:])
 
 with open('RS.json', 'w') as f:
     json.dump(data, f)
