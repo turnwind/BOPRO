@@ -44,7 +44,7 @@ def warm_strat(num):
             "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]."
             "According to the experience of previous tasks, the minimum value of the objective function may be around x1, x2 = 3, 3."
             "Please do not provide duplicate values."
-            "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(num)
+            "Please give your answer and format your output as follows: *[],[],[],...,[]*, For example *[2,1.5], [1.5,2], [0.5,0.5],[-0.5,-0.5], [-1.5,-1.5]*").format(num)
         datas = Getvalue("*",chat(pt))
         datas = "[" + datas + "]"
         try:
@@ -146,7 +146,7 @@ def SurrogateModel(history,samples):
                 "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
                 "{}"
                 "As short as possible, do not provide too much information."
-                "Please guess the loss for params:{} and format your output as follows: *xx*").format(history,samples[i])
+                "Please guess the loss for params:{} and format your output as follows: *xx*, for example *9.0* ").format(history,samples[i])
             loss = re.findall(r'-?\d+\.\d+|-?\d+', Getvalue("*",chat(pt)))
             if len(loss) == 1:
                 flag = 0
@@ -165,6 +165,7 @@ if __name__ == "__main__":
     
     ### initial
     inidatas = warm_strat(numiters)
+    print("initial points: ",inidatas)
     datas = []
     arrloss = [1e6]
     for i in inidatas:
@@ -185,6 +186,18 @@ if __name__ == "__main__":
     
 for i in range(len(arrloss)):
     arrloss[i] = min(arrloss[:i+1])
+import json
+
+data = {}
+with open("BO_data.json","r") as f:
+    data = json.load(f)
+
+data["loss"].append(arrloss)
+with open("BO_data.json","w") as f:
+    json.dump(data,f)
+
+
+print("final loss: ",arrloss)
     
 print("The final result is: ",min(arrloss))
 plt.plot(arrloss)
