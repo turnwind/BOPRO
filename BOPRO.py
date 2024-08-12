@@ -47,7 +47,10 @@ def warm_strat(num):
             "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(num)
         datas = Getvalue("*",chat(pt))
         datas = "[" + datas + "]"
-        datas =  ast.literal_eval(datas)
+        try:
+            datas =  ast.literal_eval(datas)
+        except Exception as e:
+            continue
         if len(datas) == num:
             flag = 0
     return datas
@@ -63,7 +66,10 @@ def candidate_sampling(history,num):
             "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(json.dumps(history),num)
         datas = Getvalue("*",chat(pt))
         datas = "[" + datas + "]"
-        datas =  ast.literal_eval(datas)
+        try:
+            datas =  ast.literal_eval(datas)
+        except Exception as e:
+            continue
         if len(datas) == num:
             flag = 0
     return datas
@@ -83,6 +89,7 @@ def AcquisitionFunction(history,pred):
             "{}"
             "The following is a predicted data table, with format [Hyperparameters] - [predloss]:"
             "{}"
+            "A brief summary of your reasons, as concise as possible."
             "Please provide 2 sets of parameter combinations that you consider optimal, in the format *[],[]*")
     res = {"optimistic":"","Conservative":"","pessimistic":""}
     datas = []
@@ -93,7 +100,10 @@ def AcquisitionFunction(history,pred):
             res[i] = chat(pt)
             str = Getvalue("*",res[i])
             str = "[" + str + "]"
-            data =  ast.literal_eval(str)
+            try:
+                data =  ast.literal_eval(str)
+            except Exception as e:
+                continue
             if len(data) == 2:
                 datas.append(data)
                 flag = 0
@@ -103,22 +113,27 @@ def AcquisitionFunction(history,pred):
             "{}"
             "The reasons for the choices made by the other two are: "
             "{} and {}"
+            "A brief summary of your reasons, as concise as possible."
             "Please select one best parameter combination from those chosen by everyone, in the format *[]*")
     keys = list(agent_prompts.keys())
     for i in range(m):
         for index, key in enumerate(agent_prompts.keys()):
             flag  = 1 #Determine whether the output meets the format.
             while flag:
-                pt.format(agent_prompts[key],datas,res[keys[(index+1)%3]],res[keys[(index+2)%3]])
+                pt = pt.format(agent_prompts[key],datas,res[keys[(index+1)%3]],res[keys[(index+2)%3]])
+                print(pt)
                 res[i] = chat(pt)
                 str = Getvalue("*",res[i])
                 str = "[" + str + "]"
-                data =  ast.literal_eval(str)
+                try:
+                    data =  ast.literal_eval(str)
+                except Exception as e:
+                    continue
                 if len(data) == 1:
                     flag = 0
     return data[0]
 
-AcquisitionFunction([{"params": [0, 0], "loss": 13}], [{"params": [1, 1], "loss": 10},{"params": [2, 1], "loss": 8},{"params": [2, 2], "loss": 6},{"params": [2, 3], "loss": 0}])
+#AcquisitionFunction([{"params": [0, 0], "loss": 13}], [{"params": [1, 1], "loss": 10},{"params": [2, 1], "loss": 8},{"params": [2, 2], "loss": 6},{"params": [2, 3], "loss": 0}])
 
 def SurrogateModel(history,samples):
     data_pred = []
@@ -151,11 +166,11 @@ if __name__ == "__main__":
     ### initial
     inidatas = warm_strat(numiters)
     datas = []
-    arrloss = []
-    arrloss.append(min(inidatas))
+    arrloss = [1e6]
     for i in inidatas:
         loss = obj(i[0],i[1])
         new_entry = {"params": [i[0], i[1]], "loss": loss}
+        arrloss[0] = min(arrloss[0],loss)
         datas.append(new_entry)
     
     ### Optimization   
@@ -168,7 +183,10 @@ if __name__ == "__main__":
         new_entry = {"params": next_point["params"], "loss": loss} 
         datas.append(new_entry)
     
-    print("The final result is: ",min(arrloss))
-    plt.plot(arrloss)
-    plt.show()
-      
+for i in range(len(arrloss)):
+    arrloss[i] = min(arrloss[:i+1])
+    
+print("The final result is: ",min(arrloss))
+plt.plot(arrloss)
+plt.show()
+    
