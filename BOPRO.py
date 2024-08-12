@@ -19,7 +19,7 @@ def chat(says):
                 "content": says,
             }
         ],
-        model="gpt-4o-2024-05-13",
+        model="gpt-4o-2024-08-06",
     )
     print("bots: "+chat_completion.choices[0].message.content)
     return  chat_completion.choices[0].message.content
@@ -41,10 +41,10 @@ def warm_strat(num):
         pt = (
             "You need to assume {} initial points for an optimization problem, and the objective function corresponding to the initial points should be as small as possible."
             "The objective function of this task is a binary quadratic function."
-            "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]."
-            "According to the experience of previous tasks, the minimum value of the objective function may be around x1, x2 = 3, 3."
+            "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]"
+            "According to the experience of previous tasks."
             "Please do not provide duplicate values."
-            "Please give your answer and format your output as follows: *[],[],[],...,[]*, For example *[2,1.5], [1.5,2], [0.5,0.5],[-0.5,-0.5], [-1.5,-1.5]*").format(num)
+            "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(num)
         datas = Getvalue("*",chat(pt))
         datas = "[" + datas + "]"
         try:
@@ -189,11 +189,11 @@ for i in range(len(arrloss)):
 import json
 
 data = {}
-with open("BO_data.json","r") as f:
+with open("BOPRO.json","r") as f:
     data = json.load(f)
 
 data["loss"].append(arrloss)
-with open("BO_data.json","w") as f:
+with open("BOPRO.json","w") as f:
     json.dump(data,f)
 
 

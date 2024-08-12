@@ -53,7 +53,7 @@ plt.plot(x_values, average_LLM, label='LLM')
 plt.fill_between(x_values, np.array(average_LLM) - np.array(std_LLM), np.array(average_LLM) + np.array(std_LLM), alpha=0.3)
 x_values = np.arange(len(data_BOPRO[0]))
 plt.plot(x_values, average_BOPRO, label='BOPRO')
-plt.fill_between(x_values, np.array(average_BOPRO) - np.array(std_BOPRO), np.array(average_BOPRO) + np.array(std_BOPRO), alpha=0.3)
+plt.fill_between(x_values, np.array(average_BOPRO) - np.array(std_BOPRO), np.array(average_BOPRO) + np.array(std_BOPRO), alpha=0.4)
 plt.legend()
 plt.show()
 
