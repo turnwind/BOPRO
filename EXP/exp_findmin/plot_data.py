@@ -2,10 +2,11 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-data_RS = json.load(open('RS.json'))
-data_BO = json.load(open('BO.json'))
-data_LLM = json.load(open('LLM.json'))
-data_BOPRO = json.load(open('BOPRO.json'))
+
+data_RS = json.load(open('EXP/exp_findmin/RS.json'))
+data_BO = json.load(open('EXP/exp_findmin/BO.json'))
+data_LLM = json.load(open('EXP/exp_findmin/LLM.json'))
+data_BOPRO = json.load(open('EXP/exp_findmin/BOPRO.json'))
 
 data_RS = np.array(data_RS["loss"])
 data_BO = np.array(data_BO["loss"])
