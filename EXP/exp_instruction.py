@@ -98,6 +98,8 @@ def SurrogateModel(history,samples):
         "{}"
         "Please guess the accuracy for these instructions as follow:"
         "{}").format(json.dumps(history),meta_prompt,samples)
+    datas = chat(pt,FlistResponse)
+    return datas
 
 
 if __name__ == "__main__":
