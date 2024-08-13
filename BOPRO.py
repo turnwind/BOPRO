@@ -19,7 +19,7 @@ def chat(says):
                 "content": says,
             }
         ],
-        model="gpt-4o-2024-05-13",
+        model="gpt-4o-2024-08-06",
     )
     print("bots: "+chat_completion.choices[0].message.content)
     return  chat_completion.choices[0].message.content
@@ -38,8 +38,8 @@ def warm_strat(num):
         pt = (
             "You need to assume {} initial points for an optimization problem, and the objective function corresponding to the initial points should be as small as possible."
             "The objective function of this task is a binary quadratic function."
-            "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]."
-            "According to the experience of previous tasks, the minimum value of the objective function may be around x1, x2 = 3, 3."
+            "x1 must be within the range of [-5, 5]. x2 must be within the range of [-5, 5]"
+            "According to the experience of previous tasks."
             "Please do not provide duplicate values."
             "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(num)
         datas = Getvalue("*",chat(pt))
@@ -143,7 +143,7 @@ def SurrogateModel(history,samples):
                 "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
                 "{}"
                 "As short as possible, do not provide too much information."
-                "Please guess the loss for params:{} and format your output as follows: *xx*").format(history,samples[i])
+                "Please guess the loss for params:{} and format your output as follows: *xx*, for example *9.0* ").format(history,samples[i])
             loss = re.findall(r'-?\d+\.\d+|-?\d+', Getvalue("*",chat(pt)))
             if len(loss) == 1:
                 flag = 0
@@ -162,6 +162,7 @@ if __name__ == "__main__":
     
     ### initial
     inidatas = warm_strat(numiters)
+    print("initial points: ",inidatas)
     datas = []
     arrloss = [1e6]
     for i in inidatas:
@@ -182,6 +183,18 @@ if __name__ == "__main__":
     
 for i in range(len(arrloss)):
     arrloss[i] = min(arrloss[:i+1])
+import json
+
+data = {}
+with open("BOPRO.json","r") as f:
+    data = json.load(f)
+
+data["loss"].append(arrloss)
+with open("BOPRO.json","w") as f:
+    json.dump(data,f)
+
+
+print("final loss: ",arrloss)
     
 print("The final result is: ",min(arrloss))
 plt.plot(arrloss)

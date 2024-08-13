@@ -63,24 +63,23 @@ if __name__ == "__main__":
     
     x_params = [item['params'][0] for item in datas]
     y_params = [item['params'][1] for item in datas]
-    x = np.linspace(-5, 5, 100)
-    y = np.linspace(-5, 5, 100)
-    X, Y = np.meshgrid(x, y)
+    # 保存loss结果到LLM.json文件,追加写入
+    data = []
+    for item in datas:
+        data.append(item["loss"])
 
-    Z = (X - 2)**2 + (Y - 3)**2
-
-
-    plt.figure(figsize=(10, 8))
-
-    plt.contourf(X, Y, Z, levels=50, cmap='viridis', alpha=0.7)
-    plt.plot(x_params, y_params, marker='o', linestyle='-', color='b', label='Optimized Trajectory', zorder=4)
-    for i, (x, y) in enumerate(zip(x_params, y_params)):
-        plt.text(x, y, str(i), fontsize=12, ha='right', va='bottom', color='red', zorder=5)
-    plt.colorbar(label='Loss Function Value')
-    plt.xlabel('Param 1')
-    plt.ylabel('Param 2')
-    plt.title('Trajectory of Params with Heatmap')
-    plt.legend()
-
-    plt.grid(True)
-    plt.show()
+    # 前面三个点取最小值
+    min_data = min(data[:3])
+    data[2] = min_data
+    # 去除前三个点
+    data = data[2:]
+    for i in range(len(data)):
+        data[i] = min(data[:i+1])
+    # 打开json文件
+    with open("LLM.json", "r") as f:
+        data1 = json.load(f)
+        data1["loss"].append(data)
+    # 写入json文件
+    with open("LLM.json", "w") as f:
+        json.dump(data1, f)
+    
