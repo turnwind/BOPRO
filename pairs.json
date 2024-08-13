@@ -1,0 +1,262 @@
+[
+    [
+        {
+            "instruction": "1. \"Decompose the task into smaller components and evaluate each part for a comprehensive understanding.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "2. \"Engage in iterative refinement by hypothesizing, testing, and adjusting solutions collaboratively.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Consider the broader context and interconnections to approach tasks with a comprehensive understanding.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "Apply step-by-step structural analysis within iterative refinement to enhance problem-solving accuracy.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Adaptively integrate feedback and analytical insights through iterative cycles for enhanced problem-solving.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "Implement iterative reflection and incorporate feedback to continuously refine solutions through adaptive learning.",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Consistently incorporate feedback and iterative analysis to refine problem-solving approaches and enhance accuracy.",
+            "accuracy": 0.25
+        },
+        {
+            "instruction": "\"Utilize a detailed iterative feedback loop to incrementally improve problem-solving solutions.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "Refine solutions iteratively through testing and feedback to enhance accuracy.",
+            "accuracy": 0.5
+        },
+        {
+            "instruction": "\"Collaboratively implement step-by-step analysis to refine solutions and enhance accuracy.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Continuously refine solutions through iterative testing and adaptive learning to improve accuracy.\"",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "1. \"Iteratively analyze and test solutions, integrating feedback to enhance accuracy incrementally.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "2. \"Iteratively integrate feedback and adapt solutions through detailed reflection to improve outcomes.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "\"Implement a structured, iterative cycle of testing and collaborative feedback to refine and enhance accuracy incrementally.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Construct a strategy that incorporates iterative reflection with collaborative feedback to gradually enhance problem-solving accuracy.",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "Apply a systematic approach to hypothesis testing, incorporating collaborative insights to iteratively optimize solutions.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "1. \"Foster collaborative reflection to systematically integrate feedback and optimize solutions iteratively.\"",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "Iteratively integrate feedback and analysis to refine outcomes through structured collaboration.",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Integrate adaptive learning cycles and collaborative insights for step-by-step problem-solving enhancements.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "1. \"Combine iterative testing and documentation to make solutions replicable and continually adaptive.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Implement iterative, collaborative testing to fine-tune solutions with stepwise accuracy improvement.\"",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Hypothesize, methodically test, and collaboratively adjust to iteratively enhance accuracy.\"",
+            "accuracy": 0.3
+        }
+    ],
+    [
+        {
+            "instruction": "1. \"Decompose the task into smaller components and evaluate each part for a comprehensive understanding.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "2. \"Engage in iterative refinement by hypothesizing, testing, and adjusting solutions collaboratively.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Consider the broader context and interconnections to approach tasks with a comprehensive understanding.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "Apply step-by-step structural analysis within iterative refinement to enhance problem-solving accuracy.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Adaptively integrate feedback and analytical insights through iterative cycles for enhanced problem-solving.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "Implement iterative reflection and incorporate feedback to continuously refine solutions through adaptive learning.",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Consistently incorporate feedback and iterative analysis to refine problem-solving approaches and enhance accuracy.",
+            "accuracy": 0.25
+        },
+        {
+            "instruction": "\"Utilize a detailed iterative feedback loop to incrementally improve problem-solving solutions.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "Refine solutions iteratively through testing and feedback to enhance accuracy.",
+            "accuracy": 0.5
+        },
+        {
+            "instruction": "\"Collaboratively implement step-by-step analysis to refine solutions and enhance accuracy.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Continuously refine solutions through iterative testing and adaptive learning to improve accuracy.\"",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "1. \"Iteratively analyze and test solutions, integrating feedback to enhance accuracy incrementally.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "2. \"Iteratively integrate feedback and adapt solutions through detailed reflection to improve outcomes.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "\"Implement a structured, iterative cycle of testing and collaborative feedback to refine and enhance accuracy incrementally.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Construct a strategy that incorporates iterative reflection with collaborative feedback to gradually enhance problem-solving accuracy.",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "Apply a systematic approach to hypothesis testing, incorporating collaborative insights to iteratively optimize solutions.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "1. \"Foster collaborative reflection to systematically integrate feedback and optimize solutions iteratively.\"",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "Iteratively integrate feedback and analysis to refine outcomes through structured collaboration.",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Integrate adaptive learning cycles and collaborative insights for step-by-step problem-solving enhancements.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "1. \"Combine iterative testing and documentation to make solutions replicable and continually adaptive.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Implement iterative, collaborative testing to fine-tune solutions with stepwise accuracy improvement.\"",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Hypothesize, methodically test, and collaboratively adjust to iteratively enhance accuracy.\"",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "\"Implement an adaptive feedback cycle with methodical adjustments to iteratively refine accuracy and solution validity.\"",
+            "accuracy": 0.45
+        },
+        {
+            "instruction": "Iteratively refine solutions with concise testing and incremental feedback integration.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Engage in iterative cycles of feedback integration and collaborative hypothesis testing to systematically enhance accuracy.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Develop concise reasoning techniques with each step focused on detailed analysis and structured problem-solving.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Implement structured reflection within iterative feedback cycles to incrementally enhance solution efficacy.\"",
+            "accuracy": 0.25
+        },
+        {
+            "instruction": "2. \"Utilize iterative testing and reflection cycles to systematically refine solutions for greater accuracy.\"",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "Incorporate iterative refinement and detailed collaboration to structurally enhance problem-solving accuracy.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Implement systematic analysis and adaptive feedback to iteratively improve solution outcomes.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Integrate systematic analysis with iterative feedback loops to enhance solution accuracy incrementally.\"",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "Employ structured analysis with collaborative feedback cycles to refine problem-solving accuracy incrementally.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Implement structured, collaborative methodologies to iteratively refine problem-solving approaches for enhanced accuracy.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "Employ precise iterative adjustments and incorporate feedback for methodical refinement of solutions.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Implement incremental improvements through collaborative analysis and structured iteration for enhanced problem-solving efficacy.\"",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "\"Enhance accuracy by incorporating collaborative, step-by-step iterative cycles and feedback processes.\"",
+            "accuracy": 0.5
+        },
+        {
+            "instruction": "Engage in detailed iterative testing with collaborative strategies to systematically improve outcomes.",
+            "accuracy": 0.4
+        },
+        {
+            "instruction": "Engage in precise iterative cycles with concise feedback integration to structurally enhance solution accuracy.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "1. \"Iteratively integrate structured feedback and incremental reflection for stepwise problem-solving improvement.\"",
+            "accuracy": 0.3
+        },
+        {
+            "instruction": "Employ concise iterative analysis coupled with structured feedback integration to incrementally enhance problem-solving accuracy.",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Utilize structured iterative feedback cycles to incrementally refine problem-solving techniques.\"",
+            "accuracy": 0.35
+        },
+        {
+            "instruction": "\"Engage in collaborative iterations with analytical feedback integration for step-by-step accuracy refinement.\"",
+            "accuracy": 0.3
+        }
+    ]
+]
