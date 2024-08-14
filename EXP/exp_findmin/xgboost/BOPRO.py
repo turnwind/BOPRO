@@ -10,6 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
 import random
 seed = random.randint(0, 10000)
 
@@ -30,21 +31,30 @@ def chat(says):
     )
     print("bots: "+chat_completion.choices[0].message.content)
     return  chat_completion.choices[0].message.content
-def obj(n_estimators, max_depth, min_samples_split, min_samples_leaf):
-    # 创建随机森林分类器
-    model = RandomForestClassifier(
+
+pbounds = {
+    'n_estimators': (10, 200),
+    'max_depth': (1, 30),
+    'learning_rate': (0.01, 0.3),
+    'subsample': (0.5, 1.0),
+    'colsample_bytree': (0.5, 1.0),
+}
+
+def obj(n_estimators, max_depth, learning_rate, subsample, colsample_bytree):
+    # 创建XGBoost分类器
+    model = XGBClassifier(
         n_estimators=int(n_estimators),
         max_depth=int(max_depth),
-        min_samples_split=int(min_samples_split),
-        min_samples_leaf=int(min_samples_leaf),
-        random_state=seed
+        learning_rate=learning_rate,
+        subsample=subsample,
+        colsample_bytree=colsample_bytree,
+        random_state=seed,
+        eval_metric='logloss'
     )
-    
     # 使用交叉验证评估模型性能
     scores = cross_val_score(model, X_train, y_train, cv=5, scoring='accuracy')
-    
-    # 返回平均交叉验证得分（这里使用负值，因为我们要最大化）
     return scores.mean()
+
 
 def Getvalue(ch,str):
     s = str.find(ch)
@@ -56,8 +66,8 @@ def warm_strat(num):
     while flag:
         pt = (
             "You need to assume {} initial points for an optimization problem, and the objective function corresponding to the initial points should be as large as possible."
-            "You need to solve a hyperparameter optimization problem for a random forest, using the iris dataset."
-            "x1(n_estimators) must be within the range of [10, 200]. x2(max_depth) must be within the range of [1, 30]. x3(min_samples_split) must be within the range of [2, 20]. x4(min_samples_leaf) must be within the range of [1, 10]. They are all integers."
+            "You need to address a hyperparameter optimization problem for XGBoost, utilizing the iris dataset."
+            "x1(n_estimators) must be integers and within the range of [10, 200]. x2(max_depth) must be integers and within the range of [1, 30]. x3(learning_rate) must be float and within the range of [0.01, 0.3]. x4(subsample) must be float and within the range of [0.5,1.0]. x5(colsample_bytree) must be float and within the range of [0.5, 1.0]."
             "According to the experience of previous tasks."
             "Please do not provide duplicate values."
             "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(num)
@@ -76,8 +86,8 @@ def candidate_sampling(history,num):
     while flag:
         pt = (
             "Based on the previous optimization results {}, you need to provide {} candidate points for the next optimization."
-            "You need to solve a hyperparameter optimization problem for a random forest, using the iris dataset."
-            "x1(n_estimators) must be within the range of [10, 200]. x2(max_depth) must be within the range of [1, 30]. x3(min_samples_split) must be within the range of [2, 20]. x4(min_samples_leaf) must be within the range of [1, 10]. They are all integers."
+            "You need to address a hyperparameter optimization problem for XGBoost, utilizing the iris dataset."
+            "x1(n_estimators) must be integers and within the range of [10, 200]. x2(max_depth) must be integers and within the range of [1, 30]. x3(learning_rate) must be float and within the range of [0.01, 0.3]. x4(subsample) must be float and within the range of [0.5,1.0]. x5(colsample_bytree) must be float and within the range of [0.5, 1.0]."
             "Please do not provide duplicate values."
             "Please give your answer and format your output as follows: *[],[],[],...,[]*").format(json.dumps(history),num)
         datas = Getvalue("*",chat(pt))
@@ -149,14 +159,17 @@ def AcquisitionFunction(history,pred):
                     flag = 0
     return data[0]
 
+#AcquisitionFunction([{"params": [0, 0], "loss": 13}], [{"params": [1, 1], "loss": 10},{"params": [2, 1], "loss": 8},{"params": [2, 2], "loss": 6},{"params": [2, 3], "loss": 0}])
+
 def SurrogateModel(history,samples):
     data_pred = []
     for i in range(len(samples)):
         flag  = 1 #Determine whether the output meets the format.
         while flag:
             pt = ("You are helping tune hyperparameters to maximize function(>0)."
-                "You need to solve a hyperparameter optimization problem for a random forest, using the iris dataset."
+            "You need to address a hyperparameter optimization problem for XGBoost, utilizing the iris dataset."
                 "You need to guess the target function value for a given x based on historical evaluation data."
+                "x1(n_estimators),x2(max_depth),x3(learning_rate),x4(subsample),x5(colsample_bytree). "
                 "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
                 "{}"
                 "As short as possible, do not provide too much information."
@@ -176,7 +189,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 if __name__ == "__main__":
     
     ### config
-    numiters = 10        # number of iters for BO
+    numiters = 20        # number of iters for BO
     numinipoint = 3      # number of ini points
     numsamples = 5       # number of sampled points
     
@@ -186,8 +199,8 @@ if __name__ == "__main__":
     datas = []
     arrloss = [0]
     for i in inidatas:
-        loss = obj(i[0],i[1],i[2],i[3])
-        new_entry = {"params": [i[0], i[1],i[2],i[3]], "loss": loss}
+        loss = obj(i[0],i[1],i[2],i[3],i[4])
+        new_entry = {"params": [i[0], i[1],i[2],i[3],i[4]], "loss": loss}
         arrloss[0] = max(arrloss[0],loss)
         datas.append(new_entry)
     
@@ -196,7 +209,7 @@ if __name__ == "__main__":
         samplers = candidate_sampling(datas,numsamples)
         data_pred = SurrogateModel(datas,samplers)
         next_point = max(data_pred, key=lambda x: x['loss'])
-        loss = obj(next_point["params"][0],next_point["params"][1],next_point["params"][2],next_point["params"][3])
+        loss = obj(next_point["params"][0],next_point["params"][1],next_point["params"][2],next_point["params"][3],next_point["params"][4])
         arrloss.append(loss)
         new_entry = {"params": next_point["params"], "loss": loss} 
         datas.append(new_entry)
@@ -206,11 +219,11 @@ for i in range(len(arrloss)):
 import json
 
 data = {}
-with open("EXP/exp_findmin/random_forest/BOPRO.json","r") as f:
+with open("EXP/exp_findmin/xgboost/BOPRO.json","r") as f:
     data = json.load(f)
 
 data["loss"].append(arrloss)
-with open("EXP/exp_findmin/random_forest/BOPRO.json","w") as f:
+with open("EXP/exp_findmin/xgboost/BOPRO.json","w") as f:
     json.dump(data,f)
 
 
