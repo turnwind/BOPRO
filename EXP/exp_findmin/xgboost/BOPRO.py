@@ -169,6 +169,7 @@ def SurrogateModel(history,samples):
             pt = ("You are helping tune hyperparameters to maximize function(>0)."
             "You need to address a hyperparameter optimization problem for XGBoost, utilizing the iris dataset."
                 "You need to guess the target function value for a given x based on historical evaluation data."
+                "x1(n_estimators),x2(max_depth),x3(learning_rate),x4(subsample),x5(colsample_bytree). "
                 "Below is the historical evaluation data, formatted as [Hyperparameters] - [loss]:"
                 "{}"
                 "As short as possible, do not provide too much information."
