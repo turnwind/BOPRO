@@ -4,7 +4,7 @@ import numpy as np
 
 # 字体设为Times New Roman
 plt.rcParams['font.family'] = 'Times New Roman'
-
+plt.rcParams.update({'font.size': 14})
 
 data_RS = json.load(open('EXP/exp_findmin/random_forest/RS.json'))
 data_BO = json.load(open('EXP/exp_findmin/random_forest/BO.json'))
@@ -61,7 +61,7 @@ x_values = np.arange(len(data_BOPRO[0]))
 plt.plot(x_values, average_BOPRO, label='BOPRO',color='red')
 plt.fill_between(x_values, np.array(average_BOPRO) - np.array(std_BOPRO), np.array(average_BOPRO) + np.array(std_BOPRO), alpha=0.4,color='red')
 plt.xlabel('Iteration')
-plt.ylabel('Score')
+plt.ylabel('Accuracy')
 plt.legend()
 plt.show()
 

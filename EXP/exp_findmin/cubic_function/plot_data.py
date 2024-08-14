@@ -2,6 +2,8 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
+plt.rcParams['font.family'] = 'Times New Roman'
+plt.rcParams.update({'font.size': 14})
 
 data_RS = json.load(open('EXP/exp_findmin/cubic_function/RS.json'))
 data_BO = json.load(open('EXP/exp_findmin/cubic_function/BO.json'))
@@ -58,7 +60,7 @@ x_values = np.arange(len(data_BOPRO[0]))
 plt.plot(x_values, average_BOPRO, label='BOPRO',color='red')
 plt.fill_between(x_values, np.array(average_BOPRO) - np.array(std_BOPRO), np.array(average_BOPRO) + np.array(std_BOPRO), alpha=0.4,color='red')
 plt.xlabel('Iteration')
-plt.ylabel('Loss')
+plt.ylabel('Minimum Target Value')
 plt.legend()
 plt.show()
 
