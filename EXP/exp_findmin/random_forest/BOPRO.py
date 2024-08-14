@@ -183,7 +183,7 @@ if __name__ == "__main__":
     numsamples = 5       # number of sampled points
     
     ### initial
-    inidatas = warm_strat(numiters)
+    inidatas = warm_strat(numinipoint)
     print("initial points: ",inidatas)
     datas = []
     arrloss = [1e6]
