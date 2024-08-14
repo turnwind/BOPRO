@@ -86,7 +86,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 if __name__ == "__main__":
     datas = []
     
-    for i in range(13):
+    for i in range(23):
         point = Optimizer(datas)[0]
         datas.append({"params": point, "loss": obj(point[0],point[1],point[2],point[3],point[4])})
     

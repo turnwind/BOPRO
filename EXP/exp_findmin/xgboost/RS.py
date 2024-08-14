@@ -68,7 +68,7 @@ optimizer = RandomSearchOptimizer(
 # 运行随机搜索
 optimizer.maximize(
     init_points=3,
-    n_iter=11,
+    n_iter=21,
 )
 
 # 获取最佳参数和目标值
@@ -90,7 +90,7 @@ try:
 except FileNotFoundError:
     data = {"loss": []}
 
-data["loss"].append(target_values[-11:])
+data["loss"].append(target_values[-21:])
 
 with open('EXP/exp_findmin/xgboost/RS.json', 'w') as f:
     json.dump(data, f)

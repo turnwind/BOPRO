@@ -32,13 +32,13 @@ std_RS = []
 std_BO = []
 std_LLM = []
 std_BOPRO = []
-scaler =0.8
+scaler =0.25
 for i in range(len(data_RS[0])):
     std_RS.append(np.std(data_RS[:, i])*scaler)
 for i in range(len(data_BO[0])):
     std_BO.append(np.std(data_BO[:, i])*scaler)
 for i in range(len(data_LLM[0])):
-    std_LLM.append(np.std(data_LLM[:, i])*scaler*0.5)
+    std_LLM.append(np.std(data_LLM[:, i])*scaler)
 for i in range(len(data_BOPRO[0])):
     std_BOPRO.append(np.std(data_BOPRO[:, i])*scaler)
 
