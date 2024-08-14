@@ -47,7 +47,7 @@ optimizer = BayesianOptimization(
 # 执行优化
 optimizer.maximize(
     init_points=3,  # 初始随机探索次数
-    n_iter=10,      # 优化迭代次数
+    n_iter=20,      # 优化迭代次数
 )
 
 # 获取最佳参数和目标值
@@ -68,7 +68,7 @@ try:
 except FileNotFoundError:
     data = {"loss": []}
 
-data["loss"].append(target_values[-11:])
+data["loss"].append(target_values[-21:])
 
 with open('EXP/exp_findmin/xgboost/BO.json', 'w') as f:
     json.dump(data, f)
