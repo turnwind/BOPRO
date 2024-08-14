@@ -82,7 +82,7 @@
         },
         {
             "instruction": "Iteratively integrate feedback and analysis to refine outcomes through structured collaboration.",
-            "accuracy": 0.45
+            "accuracy": 0.5
         },
         {
             "instruction": "Refine solutions iteratively through testing and feedback to enhance accuracy.",
@@ -91,28 +91,8 @@
     ],
     [
         {
-            "instruction": "Consistently incorporate feedback and iterative analysis to refine problem-solving approaches and enhance accuracy.",
-            "accuracy": 0.25
-        },
-        {
             "instruction": "\"Implement structured reflection within iterative feedback cycles to incrementally enhance solution efficacy.\"",
             "accuracy": 0.25
-        },
-        {
-            "instruction": "Construct a strategy that incorporates iterative reflection with collaborative feedback to gradually enhance problem-solving accuracy.",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "1. \"Foster collaborative reflection to systematically integrate feedback and optimize solutions iteratively.\"",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "\"Hypothesize, methodically test, and collaboratively adjust to iteratively enhance accuracy.\"",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "\"Integrate systematic analysis with iterative feedback loops to enhance solution accuracy incrementally.\"",
-            "accuracy": 0.3
         },
         {
             "instruction": "1. \"Iteratively integrate structured feedback and incremental reflection for stepwise problem-solving improvement.\"",
@@ -123,64 +103,12 @@
             "accuracy": 0.3
         },
         {
-            "instruction": "Consider the broader context and interconnections to approach tasks with a comprehensive understanding.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Continuously refine solutions through iterative testing and adaptive learning to improve accuracy.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Implement iterative, collaborative testing to fine-tune solutions with stepwise accuracy improvement.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Iteratively refine solutions with concise testing and incremental feedback integration.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "2. \"Utilize iterative testing and reflection cycles to systematically refine solutions for greater accuracy.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Incorporate iterative refinement and detailed collaboration to structurally enhance problem-solving accuracy.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Employ precise iterative adjustments and incorporate feedback for methodical refinement of solutions.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Engage in precise iterative cycles with concise feedback integration to structurally enhance solution accuracy.",
-            "accuracy": 0.35
-        },
-        {
             "instruction": "Employ concise iterative analysis coupled with structured feedback integration to incrementally enhance problem-solving accuracy.",
             "accuracy": 0.35
         },
         {
             "instruction": "\"Utilize structured iterative feedback cycles to incrementally refine problem-solving techniques.\"",
             "accuracy": 0.35
-        },
-        {
-            "instruction": "1. \"Decompose the task into smaller components and evaluate each part for a comprehensive understanding.\"",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "Apply step-by-step structural analysis within iterative refinement to enhance problem-solving accuracy.",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "\"Adaptively integrate feedback and analytical insights through iterative cycles for enhanced problem-solving.\"",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "\"Utilize a detailed iterative feedback loop to incrementally improve problem-solving solutions.\"",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "\"Collaboratively implement step-by-step analysis to refine solutions and enhance accuracy.\"",
-            "accuracy": 0.4
         },
         {
             "instruction": "1. \"Iteratively analyze and test solutions, integrating feedback to enhance accuracy incrementally.\"",
@@ -231,14 +159,6 @@
             "accuracy": 0.45
         },
         {
-            "instruction": "Implement iterative reflection and incorporate feedback to continuously refine solutions through adaptive learning.",
-            "accuracy": 0.45
-        },
-        {
-            "instruction": "2. \"Iteratively integrate feedback and adapt solutions through detailed reflection to improve outcomes.\"",
-            "accuracy": 0.45
-        },
-        {
             "instruction": "\"Implement a structured, iterative cycle of testing and collaborative feedback to refine and enhance accuracy incrementally.\"",
             "accuracy": 0.45
         },
@@ -277,36 +197,12 @@
             "accuracy": 0.3
         },
         {
-            "instruction": "Implement structured breakdown of tasks for detailed analysis.",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "Break down tasks into specific steps and apply detailed analysis at each stage.",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "2. Use step-by-step logical reasoning for thorough problem-solving.",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "Structure tasks into detailed, logical steps for comprehensive analysis.",
-            "accuracy": 0.3
-        },
-        {
             "instruction": "\"Systematically break down tasks into logical, detailed steps.\"",
-            "accuracy": 0.3
-        },
-        {
-            "instruction": "\"Emphasize gradual, logical reasoning and thorough analysis in concise steps.\"",
             "accuracy": 0.3
         },
         {
             "instruction": "Use detailed, step-by-step reasoning to enhance precision.",
             "accuracy": 0.3
-        },
-        {
-            "instruction": "1. Divide tasks into smaller parts and apply gradual analysis for improved accuracy.",
-            "accuracy": 0.35
         },
         {
             "instruction": "Implement stepwise analysis and logical structuring for accuracy.",
@@ -321,56 +217,12 @@
             "accuracy": 0.35
         },
         {
-            "instruction": "\"Break problems into small, logical steps and analyze details thoroughly.\"",
-            "accuracy": 0.35
-        },
-        {
             "instruction": "Divide and structure tasks into logical steps with detailed analysis.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Systematically break down each task into logical steps with detailed analysis.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Deconstruct tasks incrementally and analyze in detail for accurate solutions.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Implement systematic, logical steps with detailed analysis for clarity.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Apply detailed step-by-step logical reasoning to each task element for clarity.",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Develop structured, logical steps for detailed task analysis, ensuring accuracy.\"",
             "accuracy": 0.35
         },
         {
             "instruction": "Utilize detailed, step-by-step reasoning for precise problem analysis.",
             "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Use clear, step-by-step logic for detailed problem analysis.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Apply detailed, step-by-step logical reasoning for clear solutions.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "\"Use step-by-step logical reasoning for detailed, accurate analysis.\"",
-            "accuracy": 0.35
-        },
-        {
-            "instruction": "Deconstruct tasks step-by-step and analyze each element in detail before proceeding.",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "Use incremental, detailed analysis for each task stage.",
-            "accuracy": 0.4
         },
         {
             "instruction": "1. Structure tasks into clear steps for detailed, logical analysis.",
@@ -381,27 +233,11 @@
             "accuracy": 0.4
         },
         {
-            "instruction": "\"Deconstruct tasks with stepwise logical reasoning for precision.\"",
-            "accuracy": 0.4
-        },
-        {
             "instruction": "Use detailed, step-by-step logical reasoning for clarity and accuracy.",
             "accuracy": 0.4
         },
         {
-            "instruction": "\"Apply detailed, step-by-step reasoning for each task stage.\"",
-            "accuracy": 0.4
-        },
-        {
             "instruction": "Break tasks into logical steps and analyze each thoroughly.",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "Divide problems into manageable parts for detailed step-by-step analysis.",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "Systematically break complex problems into smaller, logical steps for detailed analysis.",
             "accuracy": 0.4
         },
         {
@@ -413,23 +249,7 @@
             "accuracy": 0.4
         },
         {
-            "instruction": "\"Use clear, logical steps to analyze tasks for precise solutions.\"",
-            "accuracy": 0.4
-        },
-        {
-            "instruction": "2. Apply systematic, step-by-step reasoning for precise solutions.",
-            "accuracy": 0.4
-        },
-        {
             "instruction": "Incorporate gradual, detailed logical reasoning at every stage for heightened accuracy.",
-            "accuracy": 0.45
-        },
-        {
-            "instruction": "Gradually deconstruct tasks into detailed, logical steps for clearer solutions.",
-            "accuracy": 0.45
-        },
-        {
-            "instruction": "Deconstruct tasks using stepwise logical reasoning for precise solutions.",
             "accuracy": 0.45
         },
         {
@@ -437,20 +257,8 @@
             "accuracy": 0.45
         },
         {
-            "instruction": "\"Use systematic, detailed steps to enhance problem-solving.\"",
-            "accuracy": 0.45
-        },
-        {
             "instruction": "Apply step-by-step logical reasoning and detailed analysis for precise solutions.",
             "accuracy": 0.45
-        },
-        {
-            "instruction": "\"Analyze tasks through structured, logical steps for precise solutions.\"",
-            "accuracy": 0.45
-        },
-        {
-            "instruction": "\"Break down problems into structured steps for comprehensive logical analysis and clearer solutions.\"",
-            "accuracy": 0.5
         },
         {
             "instruction": "Systematically analyze each step with detailed logic for accurate solutions.",
