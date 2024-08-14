@@ -149,8 +149,6 @@ def AcquisitionFunction(history,pred):
                     flag = 0
     return data[0]
 
-#AcquisitionFunction([{"params": [0, 0], "loss": 13}], [{"params": [1, 1], "loss": 10},{"params": [2, 1], "loss": 8},{"params": [2, 2], "loss": 6},{"params": [2, 3], "loss": 0}])
-
 def SurrogateModel(history,samples):
     data_pred = []
     for i in range(len(samples)):
@@ -186,18 +184,18 @@ if __name__ == "__main__":
     inidatas = warm_strat(numiters)
     print("initial points: ",inidatas)
     datas = []
-    arrloss = [1e6]
+    arrloss = [0]
     for i in inidatas:
         loss = obj(i[0],i[1],i[2],i[3])
         new_entry = {"params": [i[0], i[1],i[2],i[3]], "loss": loss}
-        arrloss[0] = min(arrloss[0],loss)
+        arrloss[0] = max(arrloss[0],loss)
         datas.append(new_entry)
     
     ### Optimization   
     for i in tqdm(range(numiters)):
         samplers = candidate_sampling(datas,numsamples)
         data_pred = SurrogateModel(datas,samplers)
-        next_point = min(data_pred, key=lambda x: x['loss'])
+        next_point = max(data_pred, key=lambda x: x['loss'])
         loss = obj(next_point["params"][0],next_point["params"][1],next_point["params"][2],next_point["params"][3])
         arrloss.append(loss)
         new_entry = {"params": next_point["params"], "loss": loss} 
