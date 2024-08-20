@@ -6,8 +6,6 @@ import random
 seed = random.randint(0, 10000)
 
 
-
-
 #inidatas = [[3,4], [1, 4], [0.9,3.9]]
 pbounds = {'x': (-5, 5), 'y': (-5, 5)}
 def target_function(x, y):
