@@ -175,6 +175,8 @@ if __name__ == "__main__":
     for i in tqdm(range(numiters)):
         samplers = candidate_sampling(datas,numsamples)
         data_pred = SurrogateModel(datas,samplers)
+        #next_point = AcquisitionFunction(datas,data_pred)
+        #here we just min the loss
         next_point = min(data_pred, key=lambda x: x['loss'])
         loss = obj(next_point["params"][0],next_point["params"][1])
         arrloss.append(loss)
